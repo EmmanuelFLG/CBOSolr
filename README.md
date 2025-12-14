@@ -1,3 +1,3 @@
 # CBOSolr 
 
-a
+Flask app
