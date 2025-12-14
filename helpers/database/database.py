@@ -1,8 +1,12 @@
 from flask_sqlalchemy import SQLAlchemy
-from helpers.application import app
 from flask_migrate import Migrate
+from helpers.application import app
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:emmanuel1@localhost:5432/cbodb' 
+app.config['SQLALCHEMY_DATABASE_URI'] = (
+    'postgresql://postgres:emmanuel1@postgres:5432/cbodb'
+)
 
-db = SQLAlchemy(app) #iniciando sqlAlchemy
-migrate = Migrate(app, db) #uniciando migrate com app e db
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)

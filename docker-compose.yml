@@ -1,34 +1,22 @@
 version: "3.9"
 
 services:
-  api:
-    build: .
-    container_name: flask_api
-    ports:
-      - "5000:5000"
-    depends_on:
-      - postgres
-      - solr
-    environment:
-      DATABASE_URL: postgresql+psycopg2://postgres:postgres@postgres:5432/cbo_db
-      SOLR_URL: http://solr:8983/solr/cbo
-      FLASK_ENV: development
-    volumes:
-      - .:/app
-    command: python app.py
-    restart: unless-stopped
-
   postgres:
     image: postgres:16-alpine
     container_name: postgres_db
     environment:
-      POSTGRES_DB: cbo_db
+      POSTGRES_DB: cbodb
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: emmanuel1
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d cbodb"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
     restart: unless-stopped
 
   solr:
@@ -41,6 +29,25 @@ services:
     command:
       - solr-precreate
       - cbo
+    restart: unless-stopped
+
+  api:
+    build: .
+    container_name: flask_api
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      solr:
+        condition: service_started
+    environment:
+      DATABASE_URL: postgresql+psycopg2://postgres:emmanuel1@postgres:5432/cbodb
+      SOLR_URL: http://solr:8983/solr/cbo
+      FLASK_ENV: development
+      FLASK_APP: app.py
+    volumes:
+      - .:/app
     restart: unless-stopped
 
 volumes:

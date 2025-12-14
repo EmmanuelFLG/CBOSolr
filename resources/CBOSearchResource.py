@@ -1,6 +1,6 @@
 from flask_restful import Resource
 from flask import request, jsonify
-from helpers.solr import solr
+from helpers.database.solr import solr
 
 class CBOSearchResource(Resource):
     def get(self):

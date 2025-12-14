@@ -1,6 +1,7 @@
 from sqlalchemy import Integer, Text
 from sqlalchemy.orm import Mapped, mapped_column
-from helpers.database import db
+from helpers.database.database import db
+
 
 class CBOEntidade(db.Model):
     __tablename__ = "tb_CBOEntidade"
