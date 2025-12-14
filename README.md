@@ -1,5 +1,12 @@
 # CBOSolr 
 
+
+na raiz do projeto:
+
+docker compose up --build
+
+
+Terminal:
 docker exec -it flask_api sh ----- iniciar container flask
 
 flask db init 
