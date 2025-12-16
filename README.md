@@ -7,27 +7,30 @@ na raiz do projeto:
 
 
 **Terminal:**
-1. iniciar container flask
+1. Iniciar container flask
 ```docker exec -it flask_api sh``` 
 
-2. inicializar o ambiente de migração do banco de dados
+2. Inicializar o ambiente de migração do banco de dados
 ```flask db init ```
 
-4. executar o migrate
+4. Executar o migrate
 ```flask db migrate```
 
-6. aplicar as migrações pendentes
+6. Aplicar as migrações pendentes
 ```flask db upgrade```
 
-python -m extrator.CBOExtrator ------ executar o extrator
+7. Executar o extrator
+```python -m extrator.CBOExtrator```
 
-docker compose exec postgres psql -U postgres -d cbodb --------- entrar no container do postgres
+8. Entrar no container do postgres
+```docker compose exec postgres psql -U postgres -d cbodb```
 
-select * from "tb_CBOEntidade"; ------ consultar a tabela
+9. Consultar a tabela
+```select * from "tb_CBOEntidade";```
 
 
-fora dos containers testar os endpoints:
+**Fora dos containers testar os endpoints:**
 
-GET http://localhost:5000/CBOEntidades/buscar?q=Analista
+```GET http://localhost:5000/CBOEntidades/buscar?q=Analista```
 
 curl http://localhost:5000/CBOEntidades/1
