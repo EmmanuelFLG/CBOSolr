@@ -6,14 +6,18 @@ na raiz do projeto:
 ```docker compose up --build```
 
 
-Terminal:
-docker exec -it flask_api sh ----- iniciar container flask
+**Terminal:**
+1. iniciar container flask
+```docker exec -it flask_api sh``` 
 
-flask db init 
+2. inicializar o ambiente de migração do banco de dados
+```flask db init ```
 
-flask db migrate ------- executar o migrate
+4. executar o migrate
+```flask db migrate```
 
-flask db upgrade
+6. aplicar as migrações pendentes
+```flask db upgrade```
 
 python -m extrator.CBOExtrator ------ executar o extrator
 
