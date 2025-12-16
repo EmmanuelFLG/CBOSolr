@@ -3,7 +3,7 @@
 
 na raiz do projeto:
 
-docker compose up --build
+```docker compose up --build```
 
 
 Terminal:
