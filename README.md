@@ -1,7 +1,7 @@
 # CBOSolr 
 
 
-na raiz do projeto:
+Na raiz do projeto execute:
 
 ```docker compose up --build```
 
@@ -29,8 +29,8 @@ na raiz do projeto:
 ```select * from "tb_CBOEntidade";```
 
 
-**Fora dos containers testar os endpoints:**
+**Fora dos containers testar os seguintes endpoints:**
 
 ```GET http://localhost:5000/CBOEntidades/buscar?q=Analista```
 
-curl http://localhost:5000/CBOEntidades/1
+```curl http://localhost:5000/CBOEntidades/1```
